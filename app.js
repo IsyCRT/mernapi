@@ -7,7 +7,22 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
+var mongoose = require('mongoose');
+mongoose.set('useCreateIndex', true);
+mongoose.connect('mongodb+srv://isyed:isyedMERN2020@cluster0-g6whx.mongodb.net/mymerndb?retryWrites=true&w=majority', { useNewUrlParser: true })
+    .then(() =>  console.log('mymerndb connection successful'))
+    .catch((err) => console.error(err));
+
 var app = express();
+
+var bodyParser  = require("body-parser");
+var cors = require('cors');
+//app.use(express.json());    //No es necesario
+//app.use(express.urlencoded({ extended: false }));  //No es necesario
+app.use(cors());
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
+//res.json({message:err.message, error:err}); 
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

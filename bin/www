@@ -11,8 +11,9 @@ var http = require('http');
 /**
  * Get port from environment and store in Express.
  */
-
-var port = normalizePort(process.env.PORT || '3000');
+// Es conveniente cambiar el puerto del servidor en ‘bin/www’ por otro (por ejempo: 5000)
+//ya que la aplicación ReactJS utilizará el mismo puerto que la API REST (por defecto: 3000) si queremos ejecutar ambas en local
+var port = normalizePort(process.env.PORT || '5000');
 app.set('port', port);
 
 /**
