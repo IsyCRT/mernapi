@@ -55,7 +55,7 @@ router.post('/signin', function (req, res, next) {
         if(err) return next(err);
           // If password is correct...
           if (isMatch)
-            res.status(200).send({message: 'ok', role: user.role, email: user.email});
+            res.status(200).send({message: 'ok', role: user.role, id: user._id});
           else
             res.status(401).send({message: 'ko'});
       });
